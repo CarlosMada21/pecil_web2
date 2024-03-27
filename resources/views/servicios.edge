@@ -1,0 +1,100 @@
+@layout('layout')
+
+@section('servicios')
+ 
+    <div class="gif-container">
+        <div class="text-gif-container" id="sobre-nosotros">
+            <h1 class="title">Somos Pecil y te ofrecemos <span id="dynamic-text">asesorías</span></h1>
+            <div class="description">
+                <p>Estamos comprometidos con brindarte el mejor servicio, por eso tenemos un grupo de expertos en su área. No nos limitamos a un solo servicio para que siempre puedas tenernos como referencia, navega a través de nuestros servicios y contáctanos para más información.</p>
+            </div>
+        </div>
+    </div>
+    <style>
+        
+        .gif-container {
+            background-image: url("/img/bg.gif"); /* Ruta de la imagen */
+            background-size: cover; /* Ajustar la imagen para cubrir el contenedor */
+            background-position: center; /* Centrar la imagen en el contenedor */
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex; /* Utilizar flexbox */
+            align-items: flex-start; /* Alinear el contenido al principio (arriba) */
+            justify-content: center; /* Centrar horizontalmente el contenido */
+        }
+
+        .text-gif-container {
+            
+            width: 65%; /* 3/4 del ancho del contenedor padre */
+            margin: 0 auto; /* Centrar horizontalmente el contenedor */
+        }
+
+        .title {
+            font-family: 'Arial Black', sans-serif; /* Fuente más decorativa */
+            margin-top: 10%; /* Centrar verticalmente al 30% */
+            margin-bottom: 3.5rem; /* Agregar espacio entre el título y el párrafo */
+
+            color: white; /* Cambia el color del texto para que sea legible en el fondo */
+            text-align: center; /* Centra el texto horizontalmente */
+        }
+        .description{
+            width: 75%; /* 3/4 del ancho del contenedor padre */
+            margin: 0 auto; /* Centrar horizontalmente el contenedor */
+        }
+        .description p{
+
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem; /* Aumenta el tamaño de la letra al 1.5 veces el tamaño de la fuente raíz (normalmente definida en el elemento <html>) */
+            text-align: justify; /* Justifica el texto */
+            width: 100%; /* Ajustar al ancho completo del contenedor */
+            color: white; /* Cambia el color del texto para que sea legible en el fondo */
+            line-height: 1.7; /* Aumenta el interlineado al 150% del tamaño de la letra */
+
+        }
+    </style>
+    
+<script>
+    // Lista de textos para mostrar y su duración en milisegundos
+    const texts = [
+        { text: 'asesorías', duration: 3000 },
+        { text: 'desarrollo web', duration: 3000 },
+        { text: 'desarrollo móvil', duration: 3000 },
+        { text: 'análisis de datos', duration: 3000 },
+        { text: 'ciberseguridad', duration: 3000 },
+        { text: 'capacitaciones', duration: 3000 }
+    ];
+
+    // Obtener el elemento h1
+    const dynamicTextElement = document.getElementById('dynamic-text');
+    let currentIndex = 0;
+
+    function updateDynamicText() {
+        // Obtener el texto actual y su longitud
+        const currentText = texts[currentIndex].text;
+        const textLength = currentText.length;
+
+        // Mostrar el texto actual letra por letra
+        let counter = 0;
+        const interval = setInterval(() => {
+            dynamicTextElement.textContent = currentText.substring(0, counter);
+            counter++;
+
+            // Detener el intervalo cuando se haya mostrado todo el texto
+            if (counter > textLength) {
+                clearInterval(interval);
+
+                // Pasar al siguiente texto después de un breve retraso
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % texts.length;
+                    updateDynamicText();
+                }, 1000);
+            }
+        }, 100); // Velocidad de escritura (milisegundos por letra)
+    }
+
+    // Iniciar el proceso de reescritura del texto
+    updateDynamicText();
+</script>
+@endsection

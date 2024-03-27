@@ -1,0 +1,42 @@
+        
+.gif-container {
+    background-image: url("/img/bg.gif"); /* Ruta de la imagen */
+    background-size: cover; /* Ajustar la imagen para cubrir el contenedor */
+    background-position: center; /* Centrar la imagen en el contenedor */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex; /* Utilizar flexbox */
+    align-items: flex-start; /* Alinear el contenido al principio (arriba) */
+    justify-content: center; /* Centrar horizontalmente el contenido */
+}
+
+.text-gif-container {
+    
+    width: 85%; /* 3/4 del ancho del contenedor padre */
+    margin: 0 auto; /* Centrar horizontalmente el contenedor */
+}
+
+.title {
+    font-family: 'Arial Black', sans-serif; /* Fuente más decorativa */
+    margin-top: 10%; /* Centrar verticalmente al 30% */
+    margin-bottom: 3.5rem; /* Agregar espacio entre el título y el párrafo */
+
+    color: white; /* Cambia el color del texto para que sea legible en el fondo */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+.description{
+    width: 75%; /* 3/4 del ancho del contenedor padre */
+    margin: 0 auto; /* Centrar horizontalmente el contenedor */
+}
+.description p{
+
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem; /* Aumenta el tamaño de la letra al 1.5 veces el tamaño de la fuente raíz (normalmente definida en el elemento <html>) */
+    text-align: justify; /* Justifica el texto */
+    width: 100%; /* Ajustar al ancho completo del contenedor */
+    color: white; /* Cambia el color del texto para que sea legible en el fondo */
+    line-height: 1.8; /* Aumenta el interlineado al 150% del tamaño de la letra */
+
+}

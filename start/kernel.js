@@ -17,6 +17,7 @@ const globalMiddleware = [
   'Adonis/Middleware/Session',
   'Adonis/Middleware/Shield',
   'Adonis/Middleware/AuthInit',
+  'Adonis/Middleware/Shield', // Agregar esta línea para el middleware CSRF
   'App/Middleware/ConvertEmptyStringsToNull',
 ]
 
