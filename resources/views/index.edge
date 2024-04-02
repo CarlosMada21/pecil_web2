@@ -2,6 +2,109 @@
 
 @section('home')
  
+   
+     <!-- slider -->
+
+     <div class="sliderServicios">
+        <!-- list Items -->
+        <div class="list" id="servicios">
+            <div class="item active">
+                <img src="img/web_development.jpg">
+                <div class="content">
+                    <p></p>
+                    <h2>Desarrollo Web</h2>
+                    <p>
+                        Te ayudamos a crear una página web para ti mismo o tu empresa.
+                        Transformamos tus pensamientos en realidad.
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/ia.jpg">
+                <div class="content">
+                    <p></p>
+                    <h2>Inteligencia artificial</h2>
+                    <p>
+                        Te brindamos capacitación y asesoramiento relacionado a I.A.
+                        Desde cómo utilizar herramientas hasta cómo aplicarla en tu vida diaria. 
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/app_development.jpg">
+                <div class="content">
+                    <p></p>
+                    <h2>Desarrollo Móvil</h2>
+                    <p>
+                        Creamos una aplicación móvil que resuelva las necesidades que busques cubrir.
+                        Ya sea una agenda personalizada, un sistema de finanzas o cualquier idea que tengas.
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/ciberseguridad.jpg">
+                <div class="content">
+                    <p></p>
+                    <h2>Ciberseguridad</h2>
+                    <p>
+                        ¿Te sientes inseguro cuando navegas por internet? ¿Deseas protegerte y tener
+                        conocimiento de amenazas web y cómo evitarlas? Te ayudamos con asesoramientos y capacitaciones.
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/analisis_datos.jpg">
+                <div class="content">
+                    <p></p>
+                    <h2>Análisis de datos</h2>
+                    <p>
+                        Si quieres saber qué cambios aplicar en tu negocio o en tu rutina diaria para alcanzar tus objetivos
+                        la clave está en analizar lo que hacer y cómo lo hacer para saber cómo mejorar. El análisis de
+                        datos te ayuda con esto, te guiamos a través de esta disciplina.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- button arrows -->
+        <div class="arrows">
+            <button id="prev"><i class="fas fa-chevron-left"></i></button>
+            <button id="next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <!-- thumbnail -->
+        <div class="thumbnail">
+            <div class="item active">
+                <img src="img/web_development.jpg">
+                <div class="content">
+                    Desarrollo Web
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/ia.jpg">
+                <div class="content">
+                    I.A.
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/app_development.jpg">
+                <div class="content">
+                    Desarrollo Móvil
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/ciberseguridad.jpg">
+                <div class="content">
+                    Ciberseguridad
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/analisis_datos.jpg">
+                <div class="content">
+                    Análisis de datos
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="gif-container">
         <div class="text-gif-container" id="sobre-nosotros">
             <h1 class="title">Somos Pecil y te ofrecemos servicios de <span id="dynamic-text">asesorías</span></h1>
@@ -10,7 +113,20 @@
             </div>
         </div>
     </div>
-    <div class="servicios" id="servicios">
-        
-    </div>
+    <form id="contact-form" method="POST">
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit">Enviar mensaje</button>
+    </form>
+    
 @endsection

@@ -39,3 +39,85 @@
 
     // Iniciar el proceso de reescritura del texto
     updateDynamicText();
+
+
+    let items = document.querySelectorAll('.sliderServicios .list .item');
+    let next = document.getElementById('next');
+    let prev = document.getElementById('prev');
+    let thumbnails = document.querySelectorAll('.thumbnail .item');
+    
+    // config param
+    let countItem = items.length;
+    let itemActive = 0;
+    // event next click
+    next.onclick = function(){
+        itemActive = itemActive + 1;
+        if(itemActive >= countItem){
+            itemActive = 0;
+        }
+        showSlider();
+    }
+    //event prev click
+    prev.onclick = function(){
+        itemActive = itemActive - 1;
+        if(itemActive < 0){
+            itemActive = countItem - 1;
+        }
+        showSlider();
+    }
+    // auto run slider
+    let refreshInterval = setInterval(() => {
+        next.click();
+    }, 10000)
+    function showSlider(){
+        // remove item active old
+        let itemActiveOld = document.querySelector('.sliderServicios .list .item.active');
+        let thumbnailActiveOld = document.querySelector('.thumbnail .item.active');
+        itemActiveOld.classList.remove('active');
+        thumbnailActiveOld.classList.remove('active');
+    
+        // active new item
+        items[itemActive].classList.add('active');
+        thumbnails[itemActive].classList.add('active');
+    
+        // clear auto time run slider
+        clearInterval(refreshInterval);
+        refreshInterval = setInterval(() => {
+            next.click();
+        }, 10000)
+    }
+    
+    // click thumbnail
+    thumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', () => {
+            itemActive = index;
+            showSlider();
+        })
+    })
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+    
+        // Obtener los datos del formulario
+        const formData = new FormData(this);
+    
+        // Enviar los datos a tu servidor
+        fetch('/enviar-correo', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Mensaje enviado correctamente');
+                // Restablecer el formulario después de enviar el mensaje
+                this.reset();
+            } else {
+                alert('Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.');
+            }
+        })
+        .catch(error => {
+            console.error('Error al enviar el mensaje:', error);
+            alert('Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.');
+        });
+    });
+    
