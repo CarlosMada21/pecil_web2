@@ -2,6 +2,7 @@
 
 /** @type {import('@adonisjs/framework/src/Env')} */
 const Env = use('Env')
+const port = Env.get('PORT', 3333)
 
 module.exports = {
 
@@ -239,5 +240,7 @@ module.exports = {
     sameSite: false,
     path: '/',
     maxAge: 7200
-  }
+  },
+  port: port,
+
 }
