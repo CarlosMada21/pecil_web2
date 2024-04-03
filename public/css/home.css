@@ -196,3 +196,59 @@
         color: white;
     }
 }
+/* Estilos generales */
+.contact-container {
+    background-image: url("/img/asesoría - copia.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center;
+    flex-direction: column; /* Alinea los elementos verticalmente */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+.contact-text {
+    font-size: 4vw;
+    font-weight: bold;
+    color: #898080; /* Cambia el color del texto a blanco */
+    margin-bottom: 2vh; /* Añade espacio entre el texto y los íconos */
+}
+
+.social-icons {
+    margin-top: 2vh; /* Ajusta el espacio entre el texto y los íconos */
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 2vw; /* Reducimos el espacio entre los iconos */
+    font-size: 5vw; /* Ajusta el tamaño de los iconos */
+}
+
+/* Estilos específicos para los iconos de WhatsApp, Facebook e Instagram */
+.whatsapp-icon {
+    color: green;
+}
+
+.facebook-icon {
+    color: blue;
+}
+
+.instagram-icon {
+    color: rgb(207, 42, 43);
+}
+
+/* Media query para dispositivos con un ancho máximo de 768px */
+@media screen and (max-width: 768px) {
+    .contact-text {
+        font-size: 7vw;
+    }
+
+    .social-icons a {
+        font-size: 9vw; /* Reducimos el tamaño de los iconos para dispositivos más pequeños */
+    }
+}
