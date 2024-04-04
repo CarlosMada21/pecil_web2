@@ -94,30 +94,3 @@
             showSlider();
         })
     })
-
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
-    
-        // Obtener los datos del formulario
-        const formData = new FormData(this);
-    
-        // Enviar los datos a tu servidor
-        fetch('/enviar-correo', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('Mensaje enviado correctamente');
-                // Restablecer el formulario después de enviar el mensaje
-                this.reset();
-            } else {
-                alert('Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.');
-            }
-        })
-        .catch(error => {
-            console.error('Error al enviar el mensaje:', error);
-            alert('Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.');
-        });
-    });
-    
