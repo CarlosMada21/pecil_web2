@@ -1,5 +1,5 @@
     // Lista de textos para mostrar y su duración en milisegundos
-    const texts = [
+/*    const texts = [
         { text: 'asesoría', duration: 3000 },
         { text: 'desarrollo web', duration: 3000 },
         { text: 'desarrollo móvil', duration: 3000 },
@@ -15,31 +15,49 @@
 
     function updateDynamicText() {
         // Obtener el texto actual y su longitud
-        const currentText = texts[currentIndex].text;
-        const textLength = currentText.length;
+         
+            const currentText = texts[currentIndex].text;
+            const textLength = currentText.length;
 
-        // Mostrar el texto actual letra por letra
-        let counter = 0;
-        const interval = setInterval(() => {
-            dynamicTextElement.textContent = currentText.substring(0, counter);
-            counter++;
+            // Mostrar el texto actual letra por letra
+            let counter = 0;
+            const interval = setInterval(() => {
+                dynamicTextElement.textContent = currentText.substring(0, counter);
+                counter++;
 
-            // Detener el intervalo cuando se haya mostrado todo el texto
-            if (counter > textLength) {
-                clearInterval(interval);
+                // Detener el intervalo cuando se haya mostrado todo el texto
+                if (counter > textLength) {
+                    clearInterval(interval);
 
-                // Pasar al siguiente texto después de un breve retraso
-                setTimeout(() => {
-                    currentIndex = (currentIndex + 1) % texts.length;
-                    updateDynamicText();
-                }, 1000);
-            }
-        }, 100); // Velocidad de escritura (milisegundos por letra)
+                    // Pasar al siguiente texto después de un breve retraso
+                    setTimeout(() => {
+                        currentIndex = (currentIndex + 1) % texts.length;
+                        updateDynamicText();
+                    }, 1000);
+                }
+            }, 100); // Velocidad de escritura (milisegundos por letra)
+         
     }
 
     // Iniciar el proceso de reescritura del texto
-    updateDynamicText();
+    updateDynamicText();*/
+// Crear un nuevo Web Worker
+const worker = new Worker('js/updateDynamicTextworker.js');
 
+// Obtener el elemento h1
+const dynamicTextElement = document.getElementById('dynamic-text');
+let currentIndex = 0;
+
+// Enviar las variables al Web Worker
+worker.postMessage({ type: 'init', currentIndex });
+
+// Escuchar mensajes del Web Worker
+worker.onmessage = function(event) {
+    const { type, data } = event.data;
+    if (type === 'text') {
+        dynamicTextElement.textContent = data;
+    }
+};
 
     let items = document.querySelectorAll('.sliderServicios .list .item');
     let next = document.getElementById('next');
