@@ -171,7 +171,7 @@
 .thumbnail .item .content {
     position: absolute;
     color: white;
-    inset: auto 12% 2% 2%; /* Margen del 2% en cada lado */
+    inset: auto 2% 2% 2%; /* Margen del 2% en cada lado */
 }
 @media screen and (max-width: 872px) {
     .thumbnail{
@@ -190,6 +190,12 @@
     }
 }
 @media screen and (max-width: 420px) {
+    .thumbnail .item .content {
+        display: none;
+    }
+    .arrows {
+        display: none;
+    }    
     .sliderServicios .list .item .content p{
         font-size: 90%;
         margin: 0;
